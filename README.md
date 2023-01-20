@@ -6,6 +6,10 @@ I employ the open-source Git Python API `GitPython` for the project. To install 
 ```commandline
 pip3 install -r requirements.txt
 ```
+or for conda
+```commandline
+conda install --file requirements.txt
+```
 
 ## Run the Solution
 

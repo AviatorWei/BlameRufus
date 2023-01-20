@@ -9,9 +9,11 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     repo = git.Repo(args.git_dir)
-    # print([item.a_path for item in repo.index.diff(None)])
+
+    to_blame = "Rufus"
+    week = timedelta(days=7)
     msg = f"active branch: {repo.active_branch}\n" \
         + f"local changes: {len(list(repo.index.diff(None))) > 0}\n" \
-        + f"recent commit: {datetime.now(timezone.utc) - repo.active_branch.commit.authored_datetime <= timedelta(days=7)}\n" \
-        + f"blame Rufus: {repo.active_branch.commit.author}"
+        + f"recent commit: {datetime.now(timezone.utc) - repo.active_branch.commit.authored_datetime <= week}\n" \
+        + f"blame {to_blame}: {repo.active_branch.commit.author.name == to_blame}"
     print(msg)
